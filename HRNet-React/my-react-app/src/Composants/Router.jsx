@@ -5,7 +5,7 @@ import EmployeeList from "../Pages/EmployeeList"
 function Router() {
     return (
         <Routes>
-            <Route path="/create-employee" element={<CreateEmployee />} />
+            <Route path="/" element={<CreateEmployee />} />
             <Route path="/employee-list" element={<EmployeeList />} />
         </Routes>
     )
