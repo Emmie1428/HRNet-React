@@ -253,7 +253,7 @@ export const INITIAL_FORM_STATE = {
    street: "",
    city: "",
    state: "",
-   zipCpde: "",
-   departement: "Sales",
+   zipCode: "",
+   departement: "",
 }
 
