@@ -2,10 +2,14 @@ import { NavLink } from "react-router"
 import { useState } from "react"
 import { STATES, DEPARTEMENTS, INITIAL_FORM_STATE } from "../Models/FromData"
 import { formInputValidation } from "../Utils/EmployeeValidator"
+import Modal from "modal-react-plugin"
+import "modal-react-plugin/dist/style.css"
+
 
 function CreateEmployee() {
     const [formData, setFormData] = useState(INITIAL_FORM_STATE)
     const [error, setError] = useState({})
+    const [modalIsOpen, setModalIsOpen] = useState(false)
 
     const handleChange = (e) => {
         const {name, value} = e.target
@@ -39,7 +43,7 @@ function CreateEmployee() {
 
         setFormData(INITIAL_FORM_STATE)
         setError({})
-        alert("empléy créé")
+        setModalIsOpen(true)
 
     }
 
@@ -92,11 +96,13 @@ function CreateEmployee() {
                         </option>
                     ))}
                 </select>
-
                 <button type="submit">Save</button>
-
-
             </form>
+            <Modal
+                isOpen={modalIsOpen}
+                onClose={() => setModalIsOpen(false)}
+                message="Employee created"
+            />
         </div>
         
     )
