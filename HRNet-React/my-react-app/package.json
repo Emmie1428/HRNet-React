@@ -10,8 +10,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "modal-react-plugin": "file:../../../Modal plugin - HRnet/modal-react-plugin",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
+    "react-multi-date-picker": "^4.5.2",
     "react-router": "^7.13.2"
   },
   "devDependencies": {

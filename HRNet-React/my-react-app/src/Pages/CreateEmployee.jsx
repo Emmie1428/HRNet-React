@@ -2,9 +2,11 @@ import { NavLink } from "react-router"
 import { useState } from "react"
 import { STATES, DEPARTEMENTS, INITIAL_FORM_STATE } from "../Models/FromData"
 import { formInputValidation } from "../Utils/EmployeeValidator"
-import Modal from "modal-react-plugin"
+import Modal  from "modal-react-plugin"
 import "modal-react-plugin/dist/style.css"
-
+import "./CreateEmployee.css"
+import DatePickerModule from "react-multi-date-picker"
+const DatePicker = DatePickerModule.default
 
 function CreateEmployee() {
     const [formData, setFormData] = useState(INITIAL_FORM_STATE)
@@ -20,6 +22,13 @@ function CreateEmployee() {
         setError((prev) => ({
             ...prev, 
             [name]: ""
+        }))
+    }
+
+    const handleDateChange = (name, date) => {
+        setFormData((prev) => ({
+            ...prev,
+            [name]: date
         }))
     }
 
@@ -47,6 +56,8 @@ function CreateEmployee() {
 
     }
 
+    console.log(DatePicker)
+console.log(Modal)
     return (
         <div>
             <NavLink to="/employee-list">View current employees</NavLink>
@@ -60,10 +71,25 @@ function CreateEmployee() {
                 {error.lastName && <p>{error.lastName}</p>}
 
                 <label htmlFor="dateOfBirth">Date of birth</label>
-                <input type="date" name="dateOfBirth" id="dateOfBirth" value={formData.dateOfBirth} onChange={handleChange} required/>
+                <DatePicker 
+                    id="dateOfBirth"
+                    value={formData.dateOfBirth} 
+                    onChange={(date) => handleDateChange("dateOfBirth", date)}
+                    format="MM/DD/YYYY"
+                    placeholder="MM/DD/YYYY"  
+                    maxDate={new Date()}  
+                />
+                {error.dateOfBirth && <p>{error.dateOfBirth}</p>}
 
                 <label htmlFor="startDate">Start date</label>
-                <input type="date" name="startDate" id="startDate" value={formData.startDate} onChange={handleChange} required/>
+                <DatePicker 
+                    id="startDate"
+                    value={formData.startDate} 
+                    onChange={(date) => handleDateChange("startDate", date)}
+                    format="MM/DD/YYYY"
+                    placeholder="MM/DD/YYYY"  
+                />
+                {error.startDate && <p>{error.startDate}</p>}
 
                 <label htmlFor="street">Street</label>
                 <input type="text" name="street" id="street" value={formData.street} onChange={handleChange} />
@@ -102,6 +128,7 @@ function CreateEmployee() {
                 isOpen={modalIsOpen}
                 onClose={() => setModalIsOpen(false)}
                 message="Employee created"
+                messageClassName="custom_modal_message"
             />
         </div>
         

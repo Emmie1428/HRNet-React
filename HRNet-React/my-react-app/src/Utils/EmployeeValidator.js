@@ -35,17 +35,24 @@ export const regexValidationLogic = (value, type) => {
 }
 
 export const formInputValidation = (formData) => {
-    const error = {}
+    const errors = {}
 
     for (const field in regexInputType) {
         const rule = regexInputType[field]
         const value = formData[field]
 
         if (!regexValidationLogic(value , rule.type)) {
-            error[field] = rule.message
+            errors[field] = rule.message
         }
     }
 
-    return error
+    if (!formData.dateOfBirth) {
+        errors.dateOfBirth = "Date of birth is required"
+    }
+    if (!formData.startDate) {
+        errors.startDate = "Start date is required"
+    }
+
+    return errors
 }
 
