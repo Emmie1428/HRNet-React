@@ -242,7 +242,7 @@ export const STATE_OPTIONS = STATES.map((state) => ({
     label: state.name
 }))
 
-const DEPARTEMENTS = [
+const DEPARTMENTS = [
     "Sales",
     "Marketing",
     "Engineering",
@@ -250,7 +250,7 @@ const DEPARTEMENTS = [
     "Legal"
 ]
 
-export const DEPARTEMENT_OPTIONS = DEPARTEMENTS.map((depart) => ({
+export const DEPARTMENT_OPTIONS = DEPARTMENTS.map((depart) => ({
     value: depart,
     label: depart
 }))
@@ -264,6 +264,6 @@ export const INITIAL_FORM_STATE = {
    city: "",
    state: "",
    zipCode: "",
-   departement: "",
+   department: "",
 }
 

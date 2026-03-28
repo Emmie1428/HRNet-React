@@ -1,8 +1,8 @@
 import { NavLink } from "react-router"
 import { useState } from "react"
 import Select from 'react-select'
-import { STATE_OPTIONS, DEPARTEMENT_OPTIONS, INITIAL_FORM_STATE } from "../Models/FromData"
-import { formInputValidation } from "../Utils/EmployeeValidator"
+import { STATE_OPTIONS, DEPARTMENT_OPTIONS, INITIAL_FORM_STATE } from "../../Models/FromData"
+import { formInputValidation } from "../../Utils/EmployeeValidator"
 import Modal  from "modal-react-plugin"
 import "modal-react-plugin/dist/style.css"
 import "./CreateEmployee.css"
@@ -29,14 +29,14 @@ function CreateEmployee() {
     const handleDateChange = (name, date) => {
         setFormData((prev) => ({
             ...prev,
-            [name]: date
+            [name]: date ? date.format("MM/DD/YYYY") : ""
         }))
     }
 
     const handleOptionChange = (name, option) => {
         setFormData((prev) => ({
             ...prev,
-            [name] : option
+            [name] : option ? option.value : ""
         }))
     }
 
@@ -50,9 +50,7 @@ function CreateEmployee() {
             return
         }
 
-        /*Generate a random string for the id. 9 numbers and letters*/
-        const generateId = () => Math.random().toString(36).slice(2, 11)
-        const newEmployee = {...formData, id:generateId()}
+        const newEmployee = { ...formData, id: crypto.randomUUID() }
 
         const employees = JSON.parse(localStorage.getItem("employees") || "[]")
         employees.push(newEmployee)
@@ -117,13 +115,13 @@ function CreateEmployee() {
                 <input type="text" name="zipCode" id="zipCode" value={formData.zipCode} onChange={handleChange} />
                 {error.zipCode && <p>{error.zipCode}</p>}
 
-                <label htmlFor="departement">Departement</label>
+                <label htmlFor="department">Department</label>
                 <Select 
-                    inputId="departement"
-                    options={DEPARTEMENT_OPTIONS}
-                    onChange={(option) => handleOptionChange("departement", option)}
+                    inputId="department"
+                    options={DEPARTMENT_OPTIONS}
+                    onChange={(option) => handleOptionChange("department", option)}
                 />
-                {error.departement && <p>{error.departement}</p>}
+                {error.department && <p>{error.department}</p>}
                 
                 <button type="submit">Save</button>
             </form>

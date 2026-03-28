@@ -55,8 +55,8 @@ export const formInputValidation = (formData) => {
     if (!formData.state) {
         errors.state = "State is required"
     }
-    if (!formData.departement) {
-        errors.departement = "Departement is required"
+    if (!formData.department) {
+        errors.department = "Department is required"
     }
 
     return errors

@@ -1,6 +1,6 @@
 import {Routes, Route} from "react-router"
-import CreateEmployee from "../Pages/CreateEmployee"
-import EmployeeList from "../Pages/EmployeeList"
+import CreateEmployee from "../Pages/CreateEmployee/CreateEmployee"
+import EmployeeList from "../Pages/EmployeeList/EmployeeList"
 
 function Router() {
     return (

@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "modal-react-plugin": "file:../../../Modal plugin - HRnet/modal-react-plugin",
+    "primereact": "^10.9.7",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
     "react-multi-date-picker": "^4.5.2",
