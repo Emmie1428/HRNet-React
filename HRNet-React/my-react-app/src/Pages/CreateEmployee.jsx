@@ -1,6 +1,7 @@
 import { NavLink } from "react-router"
 import { useState } from "react"
-import { STATES, DEPARTEMENTS, INITIAL_FORM_STATE } from "../Models/FromData"
+import Select from 'react-select'
+import { STATE_OPTIONS, DEPARTEMENT_OPTIONS, INITIAL_FORM_STATE } from "../Models/FromData"
 import { formInputValidation } from "../Utils/EmployeeValidator"
 import Modal  from "modal-react-plugin"
 import "modal-react-plugin/dist/style.css"
@@ -32,6 +33,13 @@ function CreateEmployee() {
         }))
     }
 
+    const handleOptionChange = (name, option) => {
+        setFormData((prev) => ({
+            ...prev,
+            [name] : option
+        }))
+    }
+
     const handleSubmit = (e) => {
         e.preventDefault()
     
@@ -56,8 +64,6 @@ function CreateEmployee() {
 
     }
 
-    console.log(DatePicker)
-console.log(Modal)
     return (
         <div>
             <NavLink to="/employee-list">View current employees</NavLink>
@@ -100,28 +106,25 @@ console.log(Modal)
                 {error.city && <p>{error.city}</p>}
 
                 <label htmlFor="state">State</label>
-                <select name="state" id="state" value={formData.state} onChange={handleChange} required>
-                    <option value="">Select a state</option>
-                    {STATES.map(state => (
-                        <option key={state.abbreviation} value={state.abbreviation}>
-                            {state.name}
-                        </option>
-                    ))}
-                </select>
+                <Select 
+                    inputId="state"
+                    options={STATE_OPTIONS}
+                    onChange={(option) => handleOptionChange("state", option)}
+                />
+                {error.state && <p>{error.state}</p>}
 
                 <label htmlFor="zipCode">ZipCode</label>
                 <input type="text" name="zipCode" id="zipCode" value={formData.zipCode} onChange={handleChange} />
                 {error.zipCode && <p>{error.zipCode}</p>}
 
                 <label htmlFor="departement">Departement</label>
-                <select name="departement" id="departement" value={formData.departement} onChange={handleChange} required>
-                    <option value="">Select a departement</option>
-                    {DEPARTEMENTS.map((departement, index) => (
-                        <option key={`${departement}-${index}`} value={departement}>
-                            {departement}
-                        </option>
-                    ))}
-                </select>
+                <Select 
+                    inputId="departement"
+                    options={DEPARTEMENT_OPTIONS}
+                    onChange={(option) => handleOptionChange("departement", option)}
+                />
+                {error.departement && <p>{error.departement}</p>}
+                
                 <button type="submit">Save</button>
             </form>
             <Modal

@@ -1,4 +1,4 @@
-export const STATES = [
+const STATES = [
     {
         "name": "Alabama",
         "abbreviation": "AL"
@@ -237,13 +237,23 @@ export const STATES = [
     }
 ]
 
-export const DEPARTEMENTS = [
+export const STATE_OPTIONS = STATES.map((state) => ({
+    value: state.abbreviation,
+    label: state.name
+}))
+
+const DEPARTEMENTS = [
     "Sales",
     "Marketing",
     "Engineering",
     "Human ressources",
     "Legal"
 ]
+
+export const DEPARTEMENT_OPTIONS = DEPARTEMENTS.map((depart) => ({
+    value: depart,
+    label: depart
+}))
 
 export const INITIAL_FORM_STATE = {
    firstName: "",

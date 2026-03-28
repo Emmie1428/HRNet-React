@@ -52,6 +52,12 @@ export const formInputValidation = (formData) => {
     if (!formData.startDate) {
         errors.startDate = "Start date is required"
     }
+    if (!formData.state) {
+        errors.state = "State is required"
+    }
+    if (!formData.departement) {
+        errors.departement = "Departement is required"
+    }
 
     return errors
 }
