@@ -10,13 +10,13 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^2.11.2",
     "modal-react-plugin": "file:../../../Modal plugin - HRnet/modal-react-plugin",
     "primereact": "^10.9.7",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
-    "react-multi-date-picker": "^4.5.2",
-    "react-router": "^7.13.2",
-    "react-select": "^5.10.2"
+    "react-redux": "^9.2.0",
+    "react-router": "^7.13.2"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.4",

@@ -1,18 +1,21 @@
 import { NavLink } from "react-router"
 import { useState } from "react"
-import Select from 'react-select'
 import { STATE_OPTIONS, DEPARTMENT_OPTIONS, INITIAL_FORM_STATE } from "../../Models/FromData"
 import { formInputValidation } from "../../Utils/EmployeeValidator"
 import Modal  from "modal-react-plugin"
 import "modal-react-plugin/dist/style.css"
 import "./CreateEmployee.css"
-import DatePickerModule from "react-multi-date-picker"
-const DatePicker = DatePickerModule.default
+import { Dropdown } from 'primereact/dropdown'
+import { Calendar } from 'primereact/calendar'
+import { useDispatch } from "react-redux"
+import { addEmployee } from "../../Slice/Employeeslice"
 
 function CreateEmployee() {
     const [formData, setFormData] = useState(INITIAL_FORM_STATE)
     const [error, setError] = useState({})
     const [modalIsOpen, setModalIsOpen] = useState(false)
+
+    const dispatch = useDispatch()
 
     const handleChange = (e) => {
         const {name, value} = e.target
@@ -29,14 +32,14 @@ function CreateEmployee() {
     const handleDateChange = (name, date) => {
         setFormData((prev) => ({
             ...prev,
-            [name]: date ? date.format("MM/DD/YYYY") : ""
+            [name]: date 
         }))
     }
 
     const handleOptionChange = (name, option) => {
         setFormData((prev) => ({
             ...prev,
-            [name] : option ? option.value : ""
+            [name] : option.value
         }))
     }
 
@@ -50,11 +53,7 @@ function CreateEmployee() {
             return
         }
 
-        const newEmployee = { ...formData, id: crypto.randomUUID() }
-
-        const employees = JSON.parse(localStorage.getItem("employees") || "[]")
-        employees.push(newEmployee)
-        localStorage.setItem("employees", JSON.stringify(employees))
+        dispatch(addEmployee({...formData, id: crypto.randomUUID()}))
 
         setFormData(INITIAL_FORM_STATE)
         setError({})
@@ -74,23 +73,26 @@ function CreateEmployee() {
                 <input type="text" name="lastName" id="lastName" value={formData.lastName} onChange={handleChange} />
                 {error.lastName && <p>{error.lastName}</p>}
 
-                <label htmlFor="dateOfBirth">Date of birth</label>
-                <DatePicker 
-                    id="dateOfBirth"
+                <label id="dateOfBirth">Date of birth</label>
+                <Calendar 
+                    aria-labelledby="dateOfBirth"
+                    name="dateOfBirth"
                     value={formData.dateOfBirth} 
-                    onChange={(date) => handleDateChange("dateOfBirth", date)}
-                    format="MM/DD/YYYY"
+                    onChange={(e) => handleDateChange(e.value)}
+                    dateFormat="MM/DD/YYYY"
                     placeholder="MM/DD/YYYY"  
+                    local= "en"
                     maxDate={new Date()}  
                 />
                 {error.dateOfBirth && <p>{error.dateOfBirth}</p>}
 
-                <label htmlFor="startDate">Start date</label>
-                <DatePicker 
-                    id="startDate"
+                <label id="startDate">Start date</label>
+                <Calendar
+                    aria-labelledby="startDate"
+                    name="sartDate"
                     value={formData.startDate} 
-                    onChange={(date) => handleDateChange("startDate", date)}
-                    format="MM/DD/YYYY"
+                    onChange={(date) => handleDateChange("startDate",date.value)}
+                    dateFormat="MM/DD/YYYY"
                     placeholder="MM/DD/YYYY"  
                 />
                 {error.startDate && <p>{error.startDate}</p>}
@@ -103,11 +105,15 @@ function CreateEmployee() {
                 <input type="text" name="city" id="city" value={formData.city} onChange={handleChange} />
                 {error.city && <p>{error.city}</p>}
 
-                <label htmlFor="state">State</label>
-                <Select 
-                    inputId="state"
+                <label id="state">State</label>
+                <Dropdown
+                    aria-labelledby="state"
+                    aria-label="Choose a state"
+                   
+                    name="state"
                     options={STATE_OPTIONS}
-                    onChange={(option) => handleOptionChange("state", option)}
+                    placeholder="Select a state"
+                    onChange={(e) => handleOptionChange("state", e.value)}
                 />
                 {error.state && <p>{error.state}</p>}
 
@@ -116,10 +122,11 @@ function CreateEmployee() {
                 {error.zipCode && <p>{error.zipCode}</p>}
 
                 <label htmlFor="department">Department</label>
-                <Select 
+                <Dropdown
                     inputId="department"
                     options={DEPARTMENT_OPTIONS}
-                    onChange={(option) => handleOptionChange("department", option)}
+                    name="departement"
+                    onChange={(e) => handleOptionChange("department", e.value)}
                 />
                 {error.department && <p>{error.department}</p>}
                 

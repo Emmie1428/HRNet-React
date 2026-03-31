@@ -3,14 +3,13 @@ import { Column } from 'primereact/column';
 import { useState } from 'react';
 import { InputText } from 'primereact/inputtext';
 import { FilterMatchMode } from 'primereact/api';
-import employeesData from "../Data/Employees.json"
+import { useSelector } from 'react-redux';
 
 function EmployeesTable () {
     const [globalFilterValue , setGlobalFilterValue] = useState("")
 
-    const localEmployees = JSON.parse(localStorage.getItem("employees") || "[]")
-    const allEmployeesData = [...employeesData.employees, ...localEmployees]
-
+    const allEmployeesData = useSelector((state) => state.employees)
+    
     const renderSearchBar = () => {
         return (
             <div>
