@@ -1,3 +1,15 @@
+.main_container {
+    display: flex;
+    justify-content: center;
+}
+
+.form_container {
+    display: inline-grid;
+    border: 1px solid;
+    border-radius: 8px;
+    padding: 20px;
+}
+
 .custom_modal_message {
     color: red;
 }

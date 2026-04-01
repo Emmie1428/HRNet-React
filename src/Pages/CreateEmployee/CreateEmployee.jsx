@@ -63,9 +63,9 @@ function CreateEmployee() {
     }
 
     return (
-        <div>
+        <div className="main_container">
             <NavLink to="/employee-list">View current employees</NavLink>
-            <form onSubmit={handleSubmit}>
+            <form className="form_container" onSubmit={handleSubmit}>
                 <label htmlFor="firstName">First name</label>
                 <input type="text" name="firstName" id="firstName" value={formData.firstName} onChange={handleChange} />
                 {error.firstName && <p>{error.firstName}</p>}
@@ -83,6 +83,8 @@ function CreateEmployee() {
                     placeholder="MM/DD/YYYY"  
                     maxDate={new Date()}  
                     dateFormat="mm/dd/yy"
+                    showIcon
+                    variant="filled"
                 />
                 {error.dateOfBirth && <p>{error.dateOfBirth}</p>}
 
@@ -94,6 +96,8 @@ function CreateEmployee() {
                     onChange={(e) => handleDateChange("startDate", e)}
                     placeholder="MM/DD/YYYY"  
                     dateFormat="mm/dd/yy"
+                    showIcon
+                    variant="filled"
                 />
                 {error.startDate && <p>{error.startDate}</p>}
 
@@ -113,6 +117,7 @@ function CreateEmployee() {
                     value={formData.state}
                     placeholder="Select a state"
                     onChange={(option) => handleOptionChange("state", option)}
+                    variant="filled"
                 />
                 {error.state && <p>{error.state}</p>}
 
@@ -128,6 +133,7 @@ function CreateEmployee() {
                     placeholder="Select a department"
                     value={formData.department}
                     onChange={(option) => handleOptionChange("department", option)}
+                    variant="filled"
                 />
                 {error.department && <p>{error.department}</p>}
                 
