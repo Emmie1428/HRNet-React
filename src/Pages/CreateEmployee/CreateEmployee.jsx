@@ -1,7 +1,7 @@
 import { NavLink } from "react-router"
 import { useState } from "react"
 import { STATE_OPTIONS, DEPARTMENT_OPTIONS, INITIAL_FORM_STATE } from "../../Models/FromData"
-import { formInputValidation } from "../../Utils/EmployeeValidator"
+import { formInputValidation } from "../../Utils/employeeValidator"
 import Modal  from "modal-react-plugin"
 import "modal-react-plugin/dist/style.css"
 import "./CreateEmployee.css"
@@ -9,6 +9,7 @@ import { Dropdown } from 'primereact/dropdown'
 import { Calendar } from 'primereact/calendar'
 import { useDispatch } from "react-redux"
 import { addEmployee } from "../../Slice/Employeeslice"
+import { formatDate, parseDate }  from "../../Utils/dateUtils"
 
 function CreateEmployee() {
     const [formData, setFormData] = useState(INITIAL_FORM_STATE)
@@ -29,10 +30,10 @@ function CreateEmployee() {
         }))
     }
 
-    const handleDateChange = (name, date) => {
+   const handleDateChange = (name, e) => {
         setFormData((prev) => ({
             ...prev,
-            [name]: date 
+            [name]: formatDate(e.value)
         }))
     }
 
@@ -73,27 +74,26 @@ function CreateEmployee() {
                 <input type="text" name="lastName" id="lastName" value={formData.lastName} onChange={handleChange} />
                 {error.lastName && <p>{error.lastName}</p>}
 
-                <label id="dateOfBirth">Date of birth</label>
+                <label htmlFor="dateOfBirth">Date of birth</label>
                 <Calendar 
-                    aria-labelledby="dateOfBirth"
+                    inputId="dateOfBirth"
                     name="dateOfBirth"
-                    value={formData.dateOfBirth} 
-                    onChange={(e) => handleDateChange(e.value)}
-                    dateFormat="MM/DD/YYYY"
+                    value={parseDate(formData.dateOfBirth)}
+                    onChange={(e) => handleDateChange("dateOfBirth", e)}
                     placeholder="MM/DD/YYYY"  
-                    local= "en"
                     maxDate={new Date()}  
+                    dateFormat="mm/dd/yy"
                 />
                 {error.dateOfBirth && <p>{error.dateOfBirth}</p>}
 
-                <label id="startDate">Start date</label>
+                <label htmlFor="startDate">Start date</label>
                 <Calendar
-                    aria-labelledby="startDate"
-                    name="sartDate"
-                    value={formData.startDate} 
-                    onChange={(date) => handleDateChange("startDate",date.value)}
-                    dateFormat="MM/DD/YYYY"
+                    inputId="startDate"
+                    name="startDate"
+                    value={parseDate(formData.startDate)} 
+                    onChange={(e) => handleDateChange("startDate", e)}
                     placeholder="MM/DD/YYYY"  
+                    dateFormat="mm/dd/yy"
                 />
                 {error.startDate && <p>{error.startDate}</p>}
 
@@ -105,15 +105,14 @@ function CreateEmployee() {
                 <input type="text" name="city" id="city" value={formData.city} onChange={handleChange} />
                 {error.city && <p>{error.city}</p>}
 
-                <label id="state">State</label>
+                <label htmlFor="state">State</label>
                 <Dropdown
-                    aria-labelledby="state"
-                    aria-label="Choose a state"
-                   
+                    inputId="state"
                     name="state"
                     options={STATE_OPTIONS}
+                    value={formData.state}
                     placeholder="Select a state"
-                    onChange={(e) => handleOptionChange("state", e.value)}
+                    onChange={(option) => handleOptionChange("state", option)}
                 />
                 {error.state && <p>{error.state}</p>}
 
@@ -125,8 +124,10 @@ function CreateEmployee() {
                 <Dropdown
                     inputId="department"
                     options={DEPARTMENT_OPTIONS}
-                    name="departement"
-                    onChange={(e) => handleOptionChange("department", e.value)}
+                    name="department"
+                    placeholder="Select a department"
+                    value={formData.department}
+                    onChange={(option) => handleOptionChange("department", option)}
                 />
                 {error.department && <p>{error.department}</p>}
                 
