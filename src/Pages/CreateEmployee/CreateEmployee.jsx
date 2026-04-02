@@ -5,11 +5,16 @@ import { formInputValidation } from "../../Utils/employeeValidator"
 import Modal  from "modal-react-plugin"
 import "modal-react-plugin/dist/style.css"
 import "./CreateEmployee.css"
+
 import { Dropdown } from 'primereact/dropdown'
 import { Calendar } from 'primereact/calendar'
+import { InputText } from "primereact/inputtext"
+import { Message } from 'primereact/message'
+
 import { useDispatch } from "react-redux"
 import { addEmployee } from "../../Slice/Employeeslice"
 import { formatDate, parseDate }  from "../../Utils/dateUtils"
+import { Button } from "primereact/button"
 
 function CreateEmployee() {
     const [formData, setFormData] = useState(INITIAL_FORM_STATE)
@@ -37,13 +42,6 @@ function CreateEmployee() {
         }))
     }
 
-    const handleOptionChange = (name, option) => {
-        setFormData((prev) => ({
-            ...prev,
-            [name] : option.value
-        }))
-    }
-
     const handleSubmit = (e) => {
         e.preventDefault()
     
@@ -64,15 +62,30 @@ function CreateEmployee() {
 
     return (
         <div className="main_container">
-            <NavLink to="/employee-list">View current employees</NavLink>
+            <NavLink  className="form_nav_link" to="/employee-list">View current employees</NavLink>
             <form className="form_container" onSubmit={handleSubmit}>
+                <h1 className="form_title">Create an employee</h1>
                 <label htmlFor="firstName">First name</label>
-                <input type="text" name="firstName" id="firstName" value={formData.firstName} onChange={handleChange} />
-                {error.firstName && <p>{error.firstName}</p>}
+                <InputText 
+                    id="firstName"
+                    name="firstName"  
+                    value={formData.firstName} 
+                    onChange={handleChange}
+                    className={error.firstName ? "p-invalid" : ""}
+                    variant="filled" 
+                />
+                {error.firstName && (<Message severity="error" text={error.firstName} />)}
 
                 <label htmlFor="lastName">Last name</label>
-                <input type="text" name="lastName" id="lastName" value={formData.lastName} onChange={handleChange} />
-                {error.lastName && <p>{error.lastName}</p>}
+                <InputText 
+                    id="lastName" 
+                    name="lastName"  
+                    value={formData.lastName} 
+                    onChange={handleChange} 
+                    className={error.lastName ? "p-invalid" : ""}
+                    variant="filled" 
+                />
+                {error.lastName && (<Message severity="error" text={error.lastName} />)}
 
                 <label htmlFor="dateOfBirth">Date of birth</label>
                 <Calendar 
@@ -84,9 +97,10 @@ function CreateEmployee() {
                     maxDate={new Date()}  
                     dateFormat="mm/dd/yy"
                     showIcon
-                    variant="filled"
+                    className={error.dateOfBirth ? "p-invalid" : ""}
+                    variant="filled" 
                 />
-                {error.dateOfBirth && <p>{error.dateOfBirth}</p>}
+                {error.dateOfBirth && (<Message severity="error" text={error.dateOfBirth} />)}
 
                 <label htmlFor="startDate">Start date</label>
                 <Calendar
@@ -97,17 +111,32 @@ function CreateEmployee() {
                     placeholder="MM/DD/YYYY"  
                     dateFormat="mm/dd/yy"
                     showIcon
-                    variant="filled"
+                    className={error.startDate ? "p-invalid" : ""}
+                    variant="filled" 
                 />
-                {error.startDate && <p>{error.startDate}</p>}
+                {error.startDate && (<Message severity="error" text={error.startDate} />)}
 
                 <label htmlFor="street">Street</label>
-                <input type="text" name="street" id="street" value={formData.street} onChange={handleChange} />
-                {error.street && <p>{error.street}</p>}
+                <InputText
+                    id="street" 
+                    name="street" 
+                    value={formData.street} 
+                    onChange={handleChange}
+                    className={error.street ? "p-invalid" : ""}
+                    variant="filled"  
+                />
+                {error.street && (<Message severity="error" text={error.street} />)}
 
                 <label htmlFor="city">City</label>
-                <input type="text" name="city" id="city" value={formData.city} onChange={handleChange} />
-                {error.city && <p>{error.city}</p>}
+                <InputText 
+                    id="city"
+                    name="city" 
+                    value={formData.city} 
+                    onChange={handleChange} 
+                    className={error.city ? "p-invalid" : ""}
+                    variant="filled"
+                />
+                {error.city && (<Message severity="error" text={error.city} />)}
 
                 <label htmlFor="state">State</label>
                 <Dropdown
@@ -116,14 +145,23 @@ function CreateEmployee() {
                     options={STATE_OPTIONS}
                     value={formData.state}
                     placeholder="Select a state"
-                    onChange={(option) => handleOptionChange("state", option)}
+                    onChange={handleChange}
+                    className={error.state ? "p-invalid" : ""}
                     variant="filled"
                 />
-                {error.state && <p>{error.state}</p>}
+                {error.state && (<Message severity="error" text={error.state} />)}
 
                 <label htmlFor="zipCode">ZipCode</label>
-                <input type="text" name="zipCode" id="zipCode" value={formData.zipCode} onChange={handleChange} />
-                {error.zipCode && <p>{error.zipCode}</p>}
+                <InputText 
+                    id="zipCode"
+                    name="zipCode"  
+                    value={formData.zipCode}
+                    placeholder="00000 / 00000-0000"
+                    onChange={handleChange} 
+                    className={error.zipCode ? "p-invalid" : ""}
+                    variant="filled"
+                />
+                {error.zipCode && (<Message severity="error" text={error.zipCode} />)}
 
                 <label htmlFor="department">Department</label>
                 <Dropdown
@@ -132,12 +170,18 @@ function CreateEmployee() {
                     name="department"
                     placeholder="Select a department"
                     value={formData.department}
-                    onChange={(option) => handleOptionChange("department", option)}
+                    onChange={handleChange}
+                    className={error.department ? "p-invalid" : ""}
                     variant="filled"
                 />
-                {error.department && <p>{error.department}</p>}
+                {error.department && (<Message severity="error" text={error.department} />)}
                 
-                <button type="submit">Save</button>
+                <Button 
+                    type="submit"
+                    label="Save"
+                    severity="success"
+                    className="save_button"
+                />
             </form>
             <Modal
                 isOpen={modalIsOpen}
