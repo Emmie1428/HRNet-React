@@ -1,8 +1,16 @@
 #root {
     width: -webkit-fill-available;
-    font-family: "Roboto Flex";
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, sans-serif;
     height: auto;
     padding: 0 30px;
+}
+
+:root {
+    --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, sans-serif;
+}
+
+* {
+    font-family: var(--font-family) !important;
 }
 
 /* ============================================
@@ -31,7 +39,6 @@
   box-shadow: 0 0 0 0.2rem #DDE8C4 !important;
 }
 
-/* Input wrapper (ex: calendar avec icône) */
 .p-calendar:not(.p-disabled):hover .p-inputtext,
 .p-inputnumber:not(.p-disabled):hover .p-inputtext {
   border-color: #6B8C3E !important;
@@ -43,7 +50,25 @@
   box-shadow: 0 0 0 0.2rem #DDE8C4 !important;
 }
 
-/* Icône trigger du calendar */
+/* ===== BOUTONS - TOUS UNIFIÉS ICI ===== */
+
+.p-button {
+  background: #6B8C3E !important;
+  border-color: #6B8C3E !important;
+  color: #ffffff !important;
+}
+
+.p-button:hover {
+  background: #8AAC4E !important;
+  border-color: #8AAC4E !important;
+  color: #ffffff !important;
+}
+
+.p-button:focus {
+  box-shadow: 0 0 0 0.2rem #DDE8C4 !important;
+}
+
+/* Icône trigger du calendar - hérite des boutons */
 .p-calendar-w-btn .p-datepicker-trigger {
   background: #6B8C3E !important;
   border-color: #6B8C3E !important;
@@ -54,26 +79,6 @@
   background: #8AAC4E !important;
   border-color: #8AAC4E !important;
 }
-
-
-/* ===== BOUTONS ===== */
-
-.p-button:not(.p-button-secondary):not(.p-button-success):not(.p-button-info):not(.p-button-warning):not(.p-button-danger):not(.p-button-help) {
-  background: #6B8C3E;
-  border-color: #6B8C3E;
-  color: #ffffff;
-}
-
-.p-button:not(.p-button-secondary):not(.p-button-success):not(.p-button-info):not(.p-button-warning):not(.p-button-danger):not(.p-button-help):hover {
-  background: #8AAC4E;
-  border-color: #8AAC4E;
-  color: #ffffff;
-}
-
-.p-button:not(.p-button-secondary):not(.p-button-success):not(.p-button-info):not(.p-button-warning):not(.p-button-danger):not(.p-button-help):focus {
-  box-shadow: 0 0 0 0.2rem #DDE8C4 !important;
-}
-
 
 /* ===== PAGINATOR ===== */
 
@@ -91,7 +96,6 @@
 .p-paginator .p-paginator-page:focus {
   box-shadow: 0 0 0 0.2rem #DDE8C4 !important;
 }
-
 
 /* ===== CALENDRIER / DATEPICKER ===== */
 
@@ -126,7 +130,6 @@
   color: #ffffff !important;
 }
 
-
 /* ===== DROPDOWN ===== */
 
 .p-dropdown:not(.p-disabled):hover {
@@ -153,7 +156,6 @@
   color: #ffffff !important;
 }
 
-
 /* ===== DATATABLE ===== */
 
 .p-datatable .p-sortable-column.p-highlight {
@@ -168,30 +170,4 @@
 .p-datatable .p-sortable-column:not(.p-highlight):hover {
   background: #DDE8C4 !important;
   color: #3D5A1E !important;
-}
-
-
-.p-button.p-button-success,
-.p-button-group.p-button-success > .p-button,
-.p-splitbutton.p-button-success > .p-button,
-.p-fileupload-choose.p-button-success {
-  background: #80b337 !important;
-  border-color: #6B8C3E !important;
-  color: #ffffff !important;
-}
-
-.p-button.p-button-success:hover,
-.p-button-group.p-button-success > .p-button:hover,
-.p-splitbutton.p-button-success > .p-button:hover,
-.p-fileupload-choose.p-button-success:hover {
-  background: #80b337 !important;
-  border-color: #8AAC4E !important;
-  color: #ffffff !important;
-}
-
-.p-button.p-button-success:focus,
-.p-button-group.p-button-success > .p-button:focus,
-.p-splitbutton.p-button-success > .p-button:focus,
-.p-fileupload-choose.p-button-success:focus {
-  box-shadow: 0 0 0 0.2rem #DDE8C4 !important;
 }

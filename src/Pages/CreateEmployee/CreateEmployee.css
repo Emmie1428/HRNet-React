@@ -15,6 +15,7 @@
 .form_container {
     display: inline-grid;
     border: 0.5px solid darkslategray;
+    background-color: darkkhaki;
     border-radius: 10px;
     padding: 30px;
 }
