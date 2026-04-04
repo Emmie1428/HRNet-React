@@ -1,21 +1,10 @@
 .nav_container { 
     padding: 0px;
-}
-
-.nav_link {
-    text-decoration: none;
     display: flex;
-    align-items: anchor-center;
-    gap: 30px;
+    justify-content: center;
 }
 
 .logo {
     width: 136px;
     height: 146px;
-}
-
-.title {
-    font-size: 1.6em;
-    margin: 0;
-    color: rgb(23, 29, 29);
 }

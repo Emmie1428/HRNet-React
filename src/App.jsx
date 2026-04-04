@@ -8,10 +8,10 @@ import Header from "./Composants/Header/Header"
 function App() {
   return (
     <BrowserRouter>
-      <div>
+      <main>
         <Header />
         <Router />
-      </div>
+      </main>
     </BrowserRouter>
   )
 }

@@ -5,6 +5,7 @@ import { formInputValidation } from "../../Utils/employeeValidator"
 import Modal  from "modal-react-plugin"
 import "modal-react-plugin/dist/style.css"
 import "./CreateEmployee.css"
+import fleche from "../../Assets/fleche.png"
 
 import { Dropdown } from 'primereact/dropdown'
 import { Calendar } from 'primereact/calendar'
@@ -62,10 +63,15 @@ function CreateEmployee() {
     }
 
     return (
-        <div className="main_container">
-            <NavLink  className="form_nav_link" to="/employee-list">View current employees</NavLink>
+        <section className="main_container">
+            <nav className="form_header">
+                <h1 className="form_header_title">Create an employee</h1>
+                <NavLink  className="form_header_navlink" to="/employee-list">
+                    View current employees
+                <img src={fleche} alt="logo flèche" className="form_header_navlink_logo"></img>
+                </NavLink>
+            </nav>
             <form className="form_container" onSubmit={handleSubmit}>
-                <h1 className="form_title">Create an employee</h1>
                 <label htmlFor="firstName">First name</label>
                 <InputText 
                     id="firstName"
@@ -141,8 +147,8 @@ function CreateEmployee() {
 
                 <label htmlFor="state">State</label>
                 <Dropdown
-                    inputId="state"
                     name="state"
+                    ariaLabel="state"
                     options={STATE_OPTIONS}
                     value={formData.state}
                     placeholder="Select a state"
@@ -188,9 +194,12 @@ function CreateEmployee() {
                 isOpen={modalIsOpen}
                 onClose={() => setModalIsOpen(false)}
                 message="Employee created"
-                messageClassName="custom_modal_message"
+                overlayClassName="modal_overlay"
+                contentClassName="modal_content"
+                closeButtonClassName="modal_closeButton"
+                messageClassName="modal_message"
             />
-        </div>
+        </section>
         
     )
 }

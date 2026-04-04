@@ -1,0 +1,32 @@
+.table_header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.table_header_title {
+    font-weight: 500;
+    font-size: 30px;
+}
+
+.table_header_navlink {
+    text-decoration: none;
+    color: black;
+    align-self: center;
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+}
+
+.table_header_navlink_logo {
+    padding: 2px 0 0 8px;
+    width: 32px;
+    height: 24px;
+}
+
+.table {
+    border:0.5px solid darkslategray;
+    border-radius: 10px;
+    background: darkkhaki;
+    padding: 10px;
+}
