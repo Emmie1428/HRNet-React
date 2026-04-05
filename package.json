@@ -1,6 +1,6 @@
 {
-  "name": "my-react-app",
-  "private": true,
+  "name": "hrnet",
+  "private": false,
   "version": "0.0.0",
   "type": "module",
   "scripts": {

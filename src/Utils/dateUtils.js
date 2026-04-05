@@ -1,3 +1,5 @@
+/* CreateEmployee.jsx calendar date format standardization */
+
 export const formatDate = (date) => {
     if (!date) return ""
     return date.toISOString().split("T")[0]

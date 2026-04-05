@@ -6,11 +6,10 @@ import { InputText } from 'primereact/inputtext';
 import { FilterMatchMode } from 'primereact/api';
 import { useSelector } from 'react-redux';
 import plus from "../../Assets/plus.png"
-import "../EmployeeList/EmployeeList.css"
+import "./EmployeeList.css"
 
 function EmployeeList() {
     const [globalFilterValue , setGlobalFilterValue] = useState("")
-
     const allEmployeesData = useSelector((state) => state.employees)
     
     const renderSearchBar = () => {
@@ -53,15 +52,15 @@ function EmployeeList() {
                     filters={{global: {value: globalFilterValue, matchMode : FilterMatchMode.CONTAINS}} }
                     globalFilterFields={["firstName", "lastName", "startDate", "dateOfBirth", "department", "street", "city", "state", "zipCode"]} 
                     emptyMessage="No employee found.">
-                    <Column field="firstName" header="First name" sortable aria-label="First name" style={{ minWidth: '6 rem' }} />
-                    <Column field="lastName" header="Last name" sortable aria-label="Last name" style={{ minWidth: '6rem' }}/>
-                    <Column field="startDate" header="Start date" sortable aria-label="Start date" style={{ minWidth: '6rem' }}/>
-                    <Column field="department" header="Department" sortable aria-label="Department" style={{ minWidth: '6rem' }} />
-                    <Column field="dateOfBirth" header="Date of birth" sortable aria-label="Date of birth" style={{ minWidth: '6rem' }}/>
-                    <Column field="street" header="Street" sortable aria-label="Street" style={{ minWidth: '6rem' }}/>
-                    <Column field="city" header="City" sortable aria-label="City" style={{ minWidth: '6rem' }}/>
-                    <Column field="state" header="State" sortable aria-label="State" style={{ minWidth: '6rem' }}/>
-                    <Column field="zipCode" header="Zip code" sortable aria-label="Zip Code" style={{ minWidth: '6rem' }}/>
+                    <Column field="firstName" header="First name" sortable aria-label="First name" />
+                    <Column field="lastName" header="Last name" sortable aria-label="Last name" />
+                    <Column field="startDate" header="Start date" sortable aria-label="Start date" />
+                    <Column field="department" header="Department" sortable aria-label="Department" />
+                    <Column field="dateOfBirth" header="Date of birth" sortable aria-label="Date of birth" />
+                    <Column field="street" header="Street" sortable aria-label="Street" />
+                    <Column field="city" header="City" sortable aria-label="City" />
+                    <Column field="state" header="State" sortable aria-label="State" />
+                    <Column field="zipCode" header="Zip code" sortable aria-label="Zip Code" />
                 </DataTable>
             </div>
         </section>

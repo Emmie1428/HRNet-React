@@ -7,10 +7,10 @@ import "modal-react-plugin/dist/style.css"
 import "./CreateEmployee.css"
 import fleche from "../../Assets/fleche.png"
 
-import { Dropdown } from 'primereact/dropdown'
-import { Calendar } from 'primereact/calendar'
+import { Dropdown } from "primereact/dropdown"
+import { Calendar } from "primereact/calendar"
 import { InputText } from "primereact/inputtext"
-import { Message } from 'primereact/message'
+import { Message } from "primereact/message"
 import { Button } from "primereact/button"
 
 import { useDispatch } from "react-redux"
@@ -59,7 +59,6 @@ function CreateEmployee() {
         setFormData(INITIAL_FORM_STATE)
         setError({})
         setModalIsOpen(true)
-
     }
 
     return (
@@ -82,7 +81,7 @@ function CreateEmployee() {
                     variant="filled" 
                 />
                 {error.firstName && (<Message severity="error" text={error.firstName} />)}
-
+                
                 <label htmlFor="lastName">Last name</label>
                 <InputText 
                     id="lastName" 
@@ -93,7 +92,7 @@ function CreateEmployee() {
                     variant="filled" 
                 />
                 {error.lastName && (<Message severity="error" text={error.lastName} />)}
-
+                
                 <label htmlFor="dateOfBirth">Date of birth</label>
                 <Calendar 
                     inputId="dateOfBirth"
@@ -147,8 +146,8 @@ function CreateEmployee() {
 
                 <label htmlFor="state">State</label>
                 <Dropdown
+                    inputId="state"
                     name="state"
-                    ariaLabel="state"
                     options={STATE_OPTIONS}
                     value={formData.state}
                     placeholder="Select a state"
@@ -182,7 +181,6 @@ function CreateEmployee() {
                     variant="filled"
                 />
                 {error.department && (<Message severity="error" text={error.department} />)}
-                
                 <Button 
                     type="submit"
                     label="Save"
@@ -200,7 +198,6 @@ function CreateEmployee() {
                 messageClassName="modal_message"
             />
         </section>
-        
     )
 }
 

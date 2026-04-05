@@ -1,9 +1,9 @@
-import { lazy, Suspense } from 'react'
+import { lazy, Suspense } from "react"
 import {Routes, Route} from "react-router"
-import CreateEmployee from "../Pages/CreateEmployee/CreateEmployee"
+import CreateEmployee from "../pages/CreateEmployee/CreateEmployee"
 
 
-const EmployeeList = lazy(() => import ("../Pages/EmployeeList/EmployeeList"))
+const EmployeeList = lazy(() => import ("../pages/EmployeeList/EmployeeList"))
 
 function Router() {
     return (
@@ -21,3 +21,4 @@ function Router() {
 }
 
 export default Router
+
