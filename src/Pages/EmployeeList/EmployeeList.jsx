@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { InputText } from 'primereact/inputtext';
 import { FilterMatchMode } from 'primereact/api';
 import { useSelector } from 'react-redux';
-import plus from "../../Assets/plus.png"
+import plus from "../../assets/plus.png"
 import "./EmployeeList.css"
 
 function EmployeeList() {

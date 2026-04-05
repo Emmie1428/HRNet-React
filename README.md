@@ -93,7 +93,7 @@ src/
 ├── utils/          # Utility and helper functions
 ├── App.jsx         # Main app component with router and layout
 ├── main.jsx        # Application entry point, renders app into the DOM
-└──store.js         # Redux store configuration
+└── store.js         # Redux store configuration
 ```
 
 ## Datas - Employee.json

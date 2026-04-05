@@ -1,11 +1,11 @@
 import { NavLink } from "react-router"
 import { useState } from "react"
-import { STATE_OPTIONS, DEPARTMENT_OPTIONS, INITIAL_FORM_STATE } from "../../Models/FromData"
-import { formInputValidation } from "../../Utils/employeeValidator"
+import { STATE_OPTIONS, DEPARTMENT_OPTIONS, INITIAL_FORM_STATE } from "../../models/FromData"
+import { formInputValidation } from "../../utils/employeeValidator"
 import Modal  from "modal-react-plugin"
 import "modal-react-plugin/dist/style.css"
 import "./CreateEmployee.css"
-import fleche from "../../Assets/fleche.png"
+import fleche from "../../assets/fleche.png"
 
 import { Dropdown } from "primereact/dropdown"
 import { Calendar } from "primereact/calendar"
@@ -14,8 +14,8 @@ import { Message } from "primereact/message"
 import { Button } from "primereact/button"
 
 import { useDispatch } from "react-redux"
-import { addEmployee } from "../../Slice/Employeeslice"
-import { formatDate, parseDate }  from "../../Utils/dateUtils"
+import { addEmployee } from "../../slice/Employeeslice"
+import { formatDate, parseDate }  from "../../utils/dateUtils"
 
 
 function CreateEmployee() {
