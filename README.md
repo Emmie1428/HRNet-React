@@ -30,6 +30,12 @@ The project also includes a local custom dependency:
 
 ## Tech Stack
 
+## Prerequisites
+
+- **Node.js**: Version 20.0.0 or higher
+- **npm**: Comes with Node.js.
+- **Code Editor**: [Visual Studio Code](https://code.visualstudio.com/) is highly recommended. 
+
 ### Main dependencies
 
 - **React** `19.2.4`
@@ -60,6 +66,26 @@ The project also includes a local custom dependency:
 - UI components with PrimeReact
 - Code linting with ESLint
 - Custom modal integration via local plugin
+
+---
+
+## Performance & Audits
+
+The application has been audited using **Lighthouse** to ensure high standards of performance, accessibility, and SEO.
+
+| Page | Performance | Accessibility | Best Practices | SEO |
+| :--- | :---: | :---: | :---: | :---: |
+| **Employee List** | 93 | 95 | 96 | 92 |
+| **Create Employee** | 96 | 91 | 96 | 92 |
+
+### Lighthouse Snapshots
+
+| Employee List | Create Employee |
+| :--- | :--- |
+| ![Create Employee](src/assets/lighthouse-reports/CreateEmployee.png) | ![Employee List](src/assets/lighthouse-reports/EmployeeList.png) |
+| *Performance Audit: Create Employee* | *Performance Audit: Employee List* |
+
+---
 
 ## Installation
 
@@ -99,3 +125,4 @@ src/
 ## Datas - Employee.json
 
 -  Database containing 100 fictitious employees for testing and performance calculation purposes.
+
