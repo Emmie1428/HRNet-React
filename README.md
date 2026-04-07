@@ -75,8 +75,8 @@ The application has been audited using **Lighthouse** to ensure high standards o
 
 | Page | Performance | Accessibility | Best Practices | SEO |
 | :--- | :---: | :---: | :---: | :---: |
-| **Employee List** | 93 | 95 | 96 | 92 |
 | **Create Employee** | 96 | 91 | 96 | 92 |
+| **Employee List** | 94 | 95 | 96 | 92 |
 
 ### Lighthouse Snapshots
 
